@@ -8,7 +8,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Tests</RootNamespace>
     <AssemblyName>Tests</AssemblyName>
-    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -59,13 +59,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\MacAddressVenderLookup.NET45\MacAddressVenderLookup.NET45.csproj">
+      <Project>{8e42672a-684a-429a-af51-ebc70182f563}</Project>
+      <Name>MacAddressVenderLookup.NET45</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MacAddressVenderLookup.Vendors\MacAddressVenderLookup.Vendors.csproj">
       <Project>{d8a9bc7b-2e11-46a5-a267-c1a6ecee6442}</Project>
       <Name>MacAddressVenderLookup.Vendors</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\MacAddressVenderLookup\MacAddressVenderLookup.csproj">
-      <Project>{7752b2d8-cc5c-43e5-a018-c10e08838ccf}</Project>
-      <Name>MacAddressVenderLookup</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
