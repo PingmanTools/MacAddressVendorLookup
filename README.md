@@ -1,4 +1,4 @@
-# MacAddressVendorLookup
+# Mac Address Vendor Lookup
 
 Fast MAC address vendor lookup library. Uses [Wireshark's manufactures database of OUIs](https://www.wireshark.org/tools/oui-lookup.html) (Organizationally Unique Identifier).
 
