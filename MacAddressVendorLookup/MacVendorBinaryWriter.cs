@@ -2,7 +2,7 @@
 using System.IO;
 using System.Text;
 
-namespace MacAddressVenderLookup
+namespace MacAddressVendorLookup
 {
     /// <summary>
     /// Writes a compact binary encoding format for vendor info entries

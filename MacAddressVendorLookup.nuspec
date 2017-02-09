@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>MacAddressVendorLookup</id>
+    <title>MacAddressVendorLookup</title>
+    <version>$version$</version>
+    <authors>Matthew Little</authors>
+    <owners>Pingman Tools</owners>
+    <licenseUrl>https://github.com/PingmanTools/MacAddressVendorLookup/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/PingmanTools/MacAddressVendorLookup</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Fast MAC address vendor lookup library. Uses Wireshark's manufactures database of OUIs (Organizationally Unique Identifier).</description>
+    <dependencies>
+      <group targetFramework=".NETStandard1.3">
+        <dependency id="System.IO.Compression" version="4.3.0" exclude="Build,Analyzers" />
+        <dependency id="System.Net.NetworkInformation" version="4.3.0" exclude="Build,Analyzers" />
+        <dependency id="NETStandard.Library" version="1.6.0" exclude="Build,Analyzers" />
+        <dependency id="System.Threading.Tasks.Parallel" version="4.3.0" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="MacAddressVendorLookup\bin\Release\netstandard1.3\MacAddressVendorLookup.dll" target="lib\netstandard1.3\MacAddressVendorLookup.dll" />
+    <file src="MacAddressVendorLookup.NET45\bin\Release\MacAddressVendorLookup.dll" target="lib\net45\MacAddressVendorLookup.dll" />
+  </files>
+</package>

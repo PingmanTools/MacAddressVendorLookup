@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard1.3</TargetFramework>
+    <Description>Fast MAC address vendor lookup library. Uses Wireshark's manufactures database of OUIs (Organizationally Unique Identifier).</Description>
+    <Company>Pingman Tools</Company>
+    <Authors>Matthew Little</Authors>
+    <PackageProjectUrl>https://github.com/PingmanTools/MacAddressVendorLookup</PackageProjectUrl>
+    <PackageLicenseUrl>https://github.com/PingmanTools/MacAddressVendorLookup/blob/master/LICENSE</PackageLicenseUrl>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="..\VendorFileGenerator\manuf_bin.zip" Link="manuf_bin.zip" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.IO.Compression" Version="4.3.0" />
+    <PackageReference Include="System.Net.NetworkInformation" Version="4.3.0" />
+    <PackageReference Include="System.Threading.Tasks.Parallel" Version="4.3.0" />
+  </ItemGroup>
+
+</Project>

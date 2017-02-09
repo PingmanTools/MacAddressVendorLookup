@@ -8,8 +8,8 @@
     <ProjectGuid>{D8A9BC7B-2E11-46A5-A267-C1A6ECEE6442}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MacAddressVenderLookup.Vendors</RootNamespace>
-    <AssemblyName>MacAddressVenderLookup.Vendors</AssemblyName>
+    <RootNamespace>MacAddressVendorLookup.Vendors</RootNamespace>
+    <AssemblyName>MacAddressVendorLookup.Vendors</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -34,7 +34,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="ManufBinResource.cs" />
+    <Compile Include="..\MacAddressVendorLookup\ManufBinResource.cs">
+      <Link>ManufBinResource.cs</Link>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

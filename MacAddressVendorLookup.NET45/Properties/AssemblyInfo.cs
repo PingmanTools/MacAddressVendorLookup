@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("MacAddressVenderLookup.NET45")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("MacAddressVendorLookup")]
+[assembly: AssemblyDescription("Fast MAC address vendor lookup library. Uses Wireshark's manufactures database of OUIs (Organizationally Unique Identifier).")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Pingman Tools")]
-[assembly: AssemblyProduct("MacAddressVenderLookup.NET45")]
-[assembly: AssemblyCopyright("Copyright ©  2016")]
+[assembly: AssemblyProduct("MacAddressVendorLookup")]
+[assembly: AssemblyCopyright("")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

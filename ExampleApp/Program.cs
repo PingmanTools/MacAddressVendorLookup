@@ -10,12 +10,12 @@ namespace ExampleApp
     {
         static void Main(string[] args)
         {
-            var vendorInfoProvider = new MacAddressVenderLookup.MacVendorBinaryReader();
-            using (var resourceStream = MacAddressVenderLookup.Vendors.ManufBinResource.GetStream().Result)
+            var vendorInfoProvider = new MacAddressVendorLookup.MacVendorBinaryReader();
+            using (var resourceStream = MacAddressVendorLookup.ManufBinResource.GetStream().Result)
             {
                 vendorInfoProvider.Init(resourceStream).Wait();
             }
-            var addressMatcher = new MacAddressVenderLookup.AddressMatcher(vendorInfoProvider);
+            var addressMatcher = new MacAddressVendorLookup.AddressMatcher(vendorInfoProvider);
 
             var networkInterfaces = System.Net.NetworkInformation.NetworkInterface.GetAllNetworkInterfaces()
                 .Where(ni => ni.NetworkInterfaceType != System.Net.NetworkInformation.NetworkInterfaceType.Tunnel)

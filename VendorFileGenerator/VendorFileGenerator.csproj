@@ -56,14 +56,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
     <None Include="manuf_bin.zip" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MacAddressVenderLookup\MacAddressVenderLookup.csproj">
-      <Project>{7752b2d8-cc5c-43e5-a018-c10e08838ccf}</Project>
-      <Name>MacAddressVenderLookup</Name>
+    <ProjectReference Include="..\MacAddressVendorLookup\MacAddressVendorLookup.csproj">
+      <Project>{88ae5c4b-574f-422f-91d0-3a883e438e9c}</Project>
+      <Name>MacAddressVendorLookup</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

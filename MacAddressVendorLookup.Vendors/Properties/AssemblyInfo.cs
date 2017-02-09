@@ -6,11 +6,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("MacAddressVenderLookup.Vendors")]
+[assembly: AssemblyTitle("MacAddressVendorLookup.Vendors")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Pingman Tools")]
-[assembly: AssemblyProduct("MacAddressVenderLookup.Vendors")]
+[assembly: AssemblyProduct("MacAddressVendorLookup.Vendors")]
 [assembly: AssemblyCopyright("Copyright ©  2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

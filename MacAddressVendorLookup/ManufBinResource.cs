@@ -7,7 +7,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MacAddressVenderLookup.Vendors
+namespace MacAddressVendorLookup
 {
     public static class ManufBinResource
     {

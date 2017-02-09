@@ -5,10 +5,10 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MacAddressVenderLookup
+namespace MacAddressVendorLookup
 {
     /// <summary>
-    /// Reads the compact binary format of vender info entries
+    /// Reads the compact binary format of Vendor info entries
     /// </summary>
     public class MacVendorBinaryReader : IMacVendorInfoProvider
     {

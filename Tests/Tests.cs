@@ -14,7 +14,7 @@ namespace Tests
         [TestMethod]
         public void DbStreamTest()
         {
-            using (var resourceStream = MacAddressVenderLookup.Vendors.ManufBinResource.GetStream().Result)
+            using (var resourceStream = MacAddressVendorLookup.ManufBinResource.GetStream().Result)
             {
                 var buffer = new byte[10];
                 int bytesRead = resourceStream.Read(buffer, 0, buffer.Length);
@@ -25,9 +25,9 @@ namespace Tests
         [TestMethod]
         public void ManufBinReaderTest()
         {
-            using (var resourceStream = MacAddressVenderLookup.Vendors.ManufBinResource.GetStream().Result)
+            using (var resourceStream = MacAddressVendorLookup.ManufBinResource.GetStream().Result)
             {
-                var reader = new MacAddressVenderLookup.MacVendorBinaryReader();
+                var reader = new MacAddressVendorLookup.MacVendorBinaryReader();
                 reader.Init(resourceStream).Wait();
                 Assert.IsTrue(reader.GetEntries().Count() > 1, "BinaryReader did not get any vendor info entries");
             }
@@ -38,7 +38,7 @@ namespace Tests
         {
             using (var manufTxtFile = File.OpenRead("manuf.txt"))
             {
-                var reader = new MacAddressVenderLookup.WiresharkManufReader();
+                var reader = new MacAddressVendorLookup.WiresharkManufReader();
                 reader.Init(manufTxtFile).Wait();
                 Assert.IsTrue(reader.GetEntries().Count() > 1, "Wireshark Manuf.txt reader did not get any vendor info entries");
             }
@@ -85,11 +85,11 @@ namespace Tests
                 PhysicalAddress.Parse("33-32-74-29-39-60")
             };
 
-            var reader = new MacAddressVenderLookup.WiresharkManufReader();
+            var reader = new MacAddressVendorLookup.WiresharkManufReader();
             var memStream = new MemoryStream(Encoding.UTF8.GetBytes(manuData));
             reader.Init(memStream).Wait();
 
-            var addressMatcher = new MacAddressVenderLookup.AddressMatcher(reader);
+            var addressMatcher = new MacAddressVendorLookup.AddressMatcher(reader);
         
             foreach(var m in expectedMatches)
             {

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Net.NetworkInformation;
 
-namespace MacAddressVenderLookup
+namespace MacAddressVendorLookup
 {
     public class AddressMatcher
     {

@@ -3,7 +3,7 @@ using System.Collections;
 using System.Linq;
 using System.Net;
 
-namespace MacAddressVenderLookup
+namespace MacAddressVendorLookup
 {
     public class MacVendorInfo
     {

@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace MacAddressVenderLookup
+namespace MacAddressVendorLookup
 {
     /// <summary>
     /// Parses the Wireshark manuf file of "Ethernet vendor codes, and well-known MAC addresses"
