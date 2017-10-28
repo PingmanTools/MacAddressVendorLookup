@@ -1,12 +1,18 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard1.3</TargetFramework>
+    <TargetFrameworks>netstandard2.0;net45</TargetFrameworks>
     <Description>Fast MAC address vendor lookup library. Uses Wireshark's manufactures database of OUIs (Organizationally Unique Identifier).</Description>
     <Company>Pingman Tools</Company>
     <Authors>Matthew Little</Authors>
-    <PackageProjectUrl>https://github.com/PingmanTools/MacAddressVendorLookup</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/PingmanTools/MacAddressVendorLookup/</PackageProjectUrl>
     <PackageLicenseUrl>https://github.com/PingmanTools/MacAddressVendorLookup/blob/master/LICENSE</PackageLicenseUrl>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <RepositoryUrl>https://github.com/PingmanTools/MacAddressVendorLookup/</RepositoryUrl>
+    <AssemblyVersion>1.1.0.0</AssemblyVersion>
+    <FileVersion>1.1.0.0</FileVersion>
+    <Version>1.1.0</Version>
+    <PackageTags>oui Organizationally Unique Identifier mac address vendor wireshark manuf PhysicalAddress</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>
@@ -14,9 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="System.IO.Compression" Version="4.3.0" />
-    <PackageReference Include="System.Net.NetworkInformation" Version="4.3.0" />
-    <PackageReference Include="System.Threading.Tasks.Parallel" Version="4.3.0" />
+    <PackageReference Include="System.IO.Compression" Version="4.3.0" Condition="'$(TargetFramework)' == 'net45'" />
   </ItemGroup>
 
-</Project>
+  </Project>

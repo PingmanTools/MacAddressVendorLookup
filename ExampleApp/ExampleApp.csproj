@@ -51,9 +51,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MacAddressVendorLookup.NET45\MacAddressVendorLookup.NET45.csproj">
-      <Project>{8e42672a-684a-429a-af51-ebc70182f563}</Project>
-      <Name>MacAddressVendorLookup.NET45</Name>
+    <ProjectReference Include="..\MacAddressVendorLookup\MacAddressVendorLookup.csproj">
+      <Project>{88ae5c4b-574f-422f-91d0-3a883e438e9c}</Project>
+      <Name>MacAddressVendorLookup</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
