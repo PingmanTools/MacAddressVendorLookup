@@ -4,7 +4,7 @@ Fast MAC address vendor lookup library. Uses [Wireshark's manufactures database 
 
 Takes a MAC address in the form of .NET's [`System.Net.NetworkInformation.PhysicalAddress`](https://msdn.microsoft.com/en-us/library/system.net.networkinformation.physicaladdress(v=vs.110).aspx) and returns a matching `MacVendorInfo` if found. 
 
-The `MacAddressVendorLookup` lib has the parsing and matching logic, and the `MacAddressVendorLookup.Vendors` lib contains a compressed form of Wireshark's manuf file (about 360KB) as an embedded resource.
+The `MacAddressVendorLookup` lib has the parsing and matching logic, and the `MacAddressVendorLookup.Vendors` lib contains a compressed form of Wireshark's manuf file (about 565KB) as an embedded resource.
 
 The `VendorFileGenerator` project checks [Wireshark's Github repo](https://github.com/wireshark/wireshark) for udpates to the [manuf file](https://github.com/wireshark/wireshark/blob/master/manuf) and generates the `manuf_bin.zip` file used as the embedded resource in `MacAddressVendorLookup.Vendors`.
 
