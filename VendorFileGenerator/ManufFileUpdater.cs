@@ -51,11 +51,18 @@ namespace VendorFileGenerator
 
             if (File.Exists(pathToManufBinFile))
             {
-                using (var zipFile = ZipFile.OpenRead(pathToManufBinFile))
-                using (var shaEntry = zipFile.GetEntry("manuf.sha").Open())
-                using (var shaStreamReader = new StreamReader(shaEntry, Encoding.UTF8))
+                try
                 {
-                    existingManufSha = await shaStreamReader.ReadToEndAsync();
+                    using (var zipFile = ZipFile.OpenRead(pathToManufBinFile))
+                    using (var shaEntry = zipFile.GetEntry("manuf.sha").Open())
+                    using (var shaStreamReader = new StreamReader(shaEntry, Encoding.UTF8))
+                    {
+                        existingManufSha = await shaStreamReader.ReadToEndAsync();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Error reading existing file: "+ex.Message+" - skipping");
                 }
             }
 
@@ -70,7 +77,7 @@ namespace VendorFileGenerator
             {
                 var repoMetadata = await streamReader.ReadToEndAsync();
                 var contentsJson = DeserializeJson<GithubApiFileEntry[]>(repoMetadata);
-                var manufMeta = contentsJson.FirstOrDefault(e => e.name == "manuf");
+                var manufMeta = contentsJson.FirstOrDefault(e => e.name == "manuf") ?? throw new Exception("No manuf file in repo");
                 manufLatestSha = manufMeta.sha;
                 manufDownloadLink = manufMeta.download_url;
             }
@@ -84,6 +91,7 @@ namespace VendorFileGenerator
 
             // download latest manuf and parse into vendor infos
             var manufParser = new WiresharkManufReader();
+            Console.WriteLine("Downloading latest manuf file from "+manufDownloadLink+"...");
             using (var manufMemStream = new MemoryStream())
             {
                 // download manuf file into memory stream

@@ -32,7 +32,7 @@ namespace MacAddressVendorLookup
         {
             using (var binaryReader = new BinaryReader(data, Encoding.UTF8, leaveOpen: true))
             {
-                while (binaryReader.BaseStream.Position != binaryReader.BaseStream.Length)
+                while (binaryReader.BaseStream.Position < binaryReader.BaseStream.Length)
                 {
                     byte maskLength = binaryReader.ReadByte();
                     var identBytes = new byte[8];

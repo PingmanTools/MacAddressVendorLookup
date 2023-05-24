@@ -15,7 +15,7 @@ namespace VendorFileGenerator
     {
         static void Main(string[] args)
         {
-            var manufFilePath = Path.GetFullPath("../../manuf_bin.zip");
+            var manufFilePath = Path.GetFullPath("../../../manuf_bin.zip");
             var fileWasUpdated = ManufFileUpdater.UpdateManufBin(manufFilePath, testReadbackOfFile: true).Result;
             if (fileWasUpdated)
             {

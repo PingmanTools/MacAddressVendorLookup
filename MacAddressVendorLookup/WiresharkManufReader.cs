@@ -76,15 +76,26 @@ namespace MacAddressVendorLookup
                     return;
                 }
 
-                var parts = line.Split(new char[0], 2, StringSplitOptions.RemoveEmptyEntries);
-                var macStr = parts[0];
-                var descParts = parts[1].Split(new[] { '#' }, StringSplitOptions.RemoveEmptyEntries);
-                var shortName = descParts[0].Trim();
-
-                string longName = null;
-                if (descParts.Length > 1)
+                var addrNameParts = line.Split(new char[0], 2, StringSplitOptions.RemoveEmptyEntries);
+                if (addrNameParts.Length < 2)
                 {
-                    longName = descParts[1].Trim();
+                    // Not splittable.
+                    return;
+                }
+                var macStr = addrNameParts[0];
+                var nameString = addrNameParts[1];
+                
+                // The name string has multiple parts - first, the short name, then optionally the long name, then maybe a comment
+                var descParts = nameString.Split(new[] { '#' }, StringSplitOptions.RemoveEmptyEntries);
+
+                var nameParts = descParts[0].Trim();
+                var shortLongSplit = nameParts.Split(new char[0], 2, StringSplitOptions.RemoveEmptyEntries);
+
+                var shortName = shortLongSplit[0].Trim();
+                string longName = null;
+                if (shortLongSplit.Length > 1)
+                {
+                    longName = shortLongSplit[1].Trim();
                 }
 
                 byte mask = 0;

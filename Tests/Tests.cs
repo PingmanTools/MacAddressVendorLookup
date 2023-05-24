@@ -1,17 +1,12 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Linq;
-using System.IO;
-using System.Text;
+﻿using System.Text;
 using System.Net.NetworkInformation;
-using System.Collections.Generic;
+using NUnit.Framework;
 
 namespace Tests
 {
-    [TestClass]
     public class Tests
     {
-        [TestMethod]
+        [Test]
         public void DbStreamTest()
         {
             using (var resourceStream = MacAddressVendorLookup.ManufBinResource.GetStream().Result)
@@ -22,7 +17,7 @@ namespace Tests
             }
         }
 
-        [TestMethod]
+        [Test]
         public void ManufBinReaderTest()
         {
             using (var resourceStream = MacAddressVendorLookup.ManufBinResource.GetStream().Result)
@@ -33,7 +28,7 @@ namespace Tests
             }
         }
 
-        [TestMethod]
+        [Test]
         public void WiresharkManufFileReaderTest()
         {
             using (var manufTxtFile = File.OpenRead("manuf.txt"))
@@ -44,16 +39,17 @@ namespace Tests
             }
         }
 
-        [TestMethod]
+        [Test]
         public void TestMatcher()
         {
             var manuData = @"#
-00:00:43	MicroTec               # MICRO TECHNOLOGY
-00:C0:57	MycoElec	# Myco Electronics
-00:50:C2:97:E0:00/36	RfIndust               # RF Industries
-08:00:29	Megatek                # Megatek Corporation
-98:7B:F3	TexasIns               # Texas Instruments
-98:6D:35:A0:00:00/28	IwaveJap               # iWave Japan, Inc.
+00-80-A3	Lantroni	Lantronix	# (see also 0800A3)
+00:00:43	MicroTec    MICRO TECHNOLOGY
+00:C0:57	MycoElec	Myco Electronics
+00:50:C2:97:E0:00/36	RfIndust    RF Industries
+08:00:29	Megatek Megatek Corporation
+98:7B:F3	TexasIns    Texas Instruments
+98:6D:35:A0:00:00/28	IwaveJap    iWave Japan, Inc. #Comment Test...
 00:50:C2:43:B0:00/36	A3ip
 01-10-18-00-00-00/24	FCoE-group
 20-52-45-43-56-00/40	Receive
@@ -73,6 +69,7 @@ namespace Tests
                 { PhysicalAddress.Parse("20-52-45-43-56-11"), "Receive" },
                 { PhysicalAddress.Parse("33-33-74-29-39-60"), "IPv6mcast" },
                 { PhysicalAddress.Parse("01-80-C2-00-00-05"), "Spanning-tree-(for-bridges)" },
+                { PhysicalAddress.Parse("00-80-A3-00-00-99"), "Lantronix" },
             };
 
             var expectedNonMatches = new[] {
@@ -95,7 +92,7 @@ namespace Tests
             {
                 var result = addressMatcher.FindInfo(m.Key);
                 Assert.IsNotNull(result, "Expected match not found for " + m.Value);
-                Assert.AreEqual(result?.Organization, m.Value, "Incorrect match");
+                Assert.AreEqual(m.Value, result?.Organization, "Incorrect match - "+m.Value);
             }
 
             foreach(var m in expectedNonMatches)
@@ -104,6 +101,21 @@ namespace Tests
                 Assert.IsNull(result, "Should not have found entry");
             }
             
+        }
+        
+        [Test]
+        public void CommentManufacturerTest()
+        {
+            var vendorInfoProvider = new MacAddressVendorLookup.MacVendorBinaryReader();
+            using (var resourceStream = MacAddressVendorLookup.ManufBinResource.GetStream().Result)
+            {
+                vendorInfoProvider.Init(resourceStream).Wait();
+            }
+            var addressMatcher = new MacAddressVendorLookup.AddressMatcher(vendorInfoProvider);
+            
+            var addr = new PhysicalAddress(new byte[] { 0x00, 0x80, 0xa3, 0x00, 0x00, 0x00 });
+            var vendorInfo = addressMatcher.FindInfo(addr);
+            Assert.AreEqual(vendorInfo.Organization, "Lantronix", "Vendor mismatch! " + vendorInfo.Organization);
         }
     }
 }
