@@ -16,16 +16,16 @@ namespace VendorFileGenerator
         static void Main(string[] args)
         {
             var manufFilePath = Path.GetFullPath("../../../manuf_bin.zip");
-            var fileWasUpdated = ManufFileUpdater.UpdateManufBin(manufFilePath, testReadbackOfFile: true).Result;
-            if (fileWasUpdated)
+            
+            if (ManufFileUpdater.UpdateManufBin(manufFilePath, testReadbackOfFile: true).Result)
             {
-                Console.WriteLine("manuf_bin.zip file was updated");
+                Console.WriteLine("manuf_bin.zip file updated");
                 Environment.ExitCode = 0;
             }
             else
             {
-                Console.WriteLine("manuf_bin.zip file was already up-to-date");
-                Environment.ExitCode = -1;
+                Console.WriteLine("An error has occurred, see console output for details.");
+                Environment.ExitCode = 1;
             }
         }
     }
